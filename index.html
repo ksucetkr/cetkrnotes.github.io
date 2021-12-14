@@ -1,6 +1,711 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>KSUNotes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: 'Inter', sans-serif;
+            }
+            h1 {
+                margin-block-start: 0;
+                margin-block-end: 0;
+            }
+            .hero {
+                position: relative;
+                background-size: 100% 100vh;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-color: #464646;
+                background-size: cover;
+                background-position: center center;
+                max-height: 100vh;
+                color: #fff;
+                z-index: 1;
+                height: 100vh;
+            }
+            .hero::before {
+                content: "";
+                position: absolute;
+                top: 0; 
+                left: 0;
+                width: 100%; 
+                height: 100vh;
+                background-repeat: no-repeat;
+                background-color: #464646;
+                background-size: cover;
+                background-position: center center;
+                background-image: url("cet.jpg");
+                filter: grayscale(100%);
+                z-index: -1;
+            }
+            .logo_wrapper img {
+                height: 70px;
+                margin: 10px 0px 0px 10px;
+            }
+            .hero_text {
+                margin-top: 40vh;
+                margin-left:20px;
+                box-shadow: inset 0px -50px 500px rgba(0,0,0,0.1), 5px 5px 100px rgba(0,0,0,0.1);
+                width: fit-content;
+            }
+            .hero_text h1 {
+                font-size: 2.5em;
+                font-weight: 700;
+                color: #fff;
+                margin: 10px;
+            }
+            .hero_text p {
+                font-weight: 700;
+                font-size: 1em;
+                width: fit-content;
+                padding-left: 10px;
+                box-shadow: inset 0px -10px 100px rgba(0,0,0,0.3), 5px 10px 100px rgba(0,0,0,0.3);
+            }
+            .hero_text p::after {
+                content: "";
+                float: left;
+                background-color: #008fd5;
+                width: 90%;
+                height: 5px;
+                border-radius: 3px;
+                margin-top: 10px;
+            }
+            /* Scroll Arrow */
+            #scroll {
+                position: absolute;
+                bottom: 50px;
+                display: flex;
+                width: 100%;
+                justify-content: center;
+            }
+            #scroll a span{
+                position: absolute;
+                top: 0;
+                width: 24px;
+                height: 24px;
+                left: 50%;
+                margin-left: -12px;
+                border-left: 1px solid #fff;
+                border-bottom: 1px solid #fff;
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+                -webkit-animation: sdb04 2s infinite;
+                animation: sdb04 2s infinite;
+                box-sizing: border-box;
+            }
+            @-webkit-keyframes sdb04 {
+                0% {-webkit-transform: rotate(-45deg) translate(0, 0);}
+                20% {-webkit-transform: rotate(-45deg) translate(-10px, 10px);}
+                40% {-webkit-transform: rotate(-45deg) translate(0, 0);}
+            }
+            @keyframes sdb04 {
+                0% {transform: rotate(-45deg) translate(0, 0);}
+                20% {transform: rotate(-45deg) translate(-10px, 10px);}
+                40% {transform: rotate(-45deg) translate(0, 0);}
+            }
+
+            .study {
+                background-color: #fff;
+                color: #008fd5;
+                padding: 30px 20px 50px 20px;
+            }
+            .study p{
+                width: fit-content;
+            }
+            .study p::after {
+                content: "";
+                float: left;
+                background-color: #008fd5;
+                width: 60%;
+                height: 5px;
+                border-radius: 3px;
+                margin-top: 10px;
+            }
+            /* Float four columns side by side */
+            .scol {
+                float: left;
+                width: 25%;
+                padding: 0 10px;
+            }
+
+            /* Remove extra left and right margins, due to padding */
+            .srow {margin: 0 -5px;}
+
+            /* Clear floats after the columns */
+            .srow:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            /* Responsive columns */
+            @media screen and (max-width: 600px) {
+                .scol {
+                    width: 100%;
+                    display: block;
+                    margin-bottom: 20px;
+                }
+            }
+
+            /* Style the counter cards */
+            .card {
+                position: relative;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                padding: 16px;
+                background-color: #f1f1f1;
+                border-radius: 10px;
+                margin-top: 20px;
+                min-height: 180px;
+                color: white;
+                box-shadow: inset 0px -80px 90px rgba(0,0,0,1);
+                background-size: cover;
+                background-position: center center;
+            }
+            .card span {
+                position: absolute;
+                bottom: 30px;
+                left: 20px;
+                font-size: large;
+                font-weight: 700;
+            }
+            .card1 {
+                background-image: url("https://static.sciencelearn.org.nz/images/images/000/001/960/embed/ElectricalCircuit_MikhailTchkheidze_123RF_5243627_m.jpg");
+            }
+            .card2 {
+                background-image: url("http://www.reviewadda.com/assets/uploads/article_images/info-design-mechanical-vs-civil.jpg");
+            }
+            .card3 {
+                background-image: url("https://geekboots.sfo2.cdn.digitaloceanspaces.com/post/why-c-is-so-popular-and-still-the-best-programming-language-1564571756694.jpg");
+            }
+            .card4 {
+                background-image: url("https://www.engineersupply.com/Images/Categories/Content/blog-how-many-types-of-civil-engineering-drawings-are-there-FA-A1.jpg");
+            }
+            .card5 {
+                background-image: url("https://www.fusioneng.com/images/capabilities/shutterstock_245717290.jpg");
+            }
+            .card6 {
+                background-image: url("https://www.avensonline.org/blog/wp-content/uploads/2015/09/chemistry-and-its-applications2.jpg");
+            }
+            .card7 {
+                background-image: url("https://www.environmentalscience.org/wp-content/uploads/2018/08/physics-640x416.jpg");
+            }
+            .card8 {
+                background-image: url("https://www.nct.ac.in/assets/img/maths/slider/1.jpg");
+            }
+            .card9 {
+                background-image: url("https://educationbusinessuk.net/sites/default/files/books-2568151_1280.jpg");
+            }
+            .card10 {
+                background-image: url("https://www.allenfairviewchamber.com/wp-content/uploads/2018/12/businesscommunicationskills-1024x672.jpeg");
+            }
+
+            .preque {
+                background-color:#008fd5;
+                color: white;
+                padding: 20px;
+            }
+            .preque p{
+                width: fit-content;
+            }
+            .preque p::after {
+                content: "";
+                float: left;
+                background-color: #fff;
+                width: 60%;
+                height: 5px;
+                border-radius: 3px;
+                margin-top: 10px;
+            }
+            .preque ul {
+                margin-top: 40px;
+            }
+            .preque ul li {
+                padding: 5px;
+            }
+            .preque a {
+                text-decoration: none;
+                color: white;
+                border-bottom: 1px dotted white;
+            }
+            .preque a:hover{
+                background-color: white;
+                color: #008fd5;
+            }
+            .scholor {
+                background-color:#008fd5;
+                color: #fff;
+                padding: 20px;
+            }
+            .scholor p{
+                width: fit-content;
+            }
+            .scholor p::after {
+                content: "";
+                float: left;
+                background-color: #fff;
+                width: 60%;
+                height: 5px;
+                border-radius: 3px;
+                margin-top: 10px;
+            }
+            .scholor ul {
+                list-style-type: none;
+                padding: 10px;
+            }
+            .scholor ul li{
+                padding: 5px;
+                font-size: large;
+            }
+            .scholor ul a{
+                text-decoration: none;
+                color: #fff;
+                border-bottom: 1px dotted #fff;
+            }
+            .scholor ul a:hover {
+                background-color: #fff;
+                color: #008fd5;
+            }
+            .query {
+                background-color:#fff;
+                color: #008fd5;
+                padding: 20px;
+            }
+            .query p{
+                width: fit-content;
+            }
+            
+            .query ul {
+                margin-top:30px;
+                font-size:medium;
+                font-family: 'poppins';
+                list-style-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDhmZDUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLXBob25lIj48cGF0aCBkPSJNMjIgMTYuOTJ2M2EyIDIgMCAwIDEtMi4xOCAyIDE5Ljc5IDE5Ljc5IDAgMCAxLTguNjMtMy4wNyAxOS41IDE5LjUgMCAwIDEtNi02IDE5Ljc5IDE5Ljc5IDAgMCAxLTMuMDctOC42N0EyIDIgMCAwIDEgNC4xMSAyaDNhMiAyIDAgMCAxIDIgMS43MiAxMi44NCAxMi44NCAwIDAgMCAuNyAyLjgxIDIgMiAwIDAgMS0uNDUgMi4xMUw4LjA5IDkuOTFhMTYgMTYgMCAwIDAgNiA2bDEuMjctMS4yN2EyIDIgMCAwIDEgMi4xMS0uNDUgMTIuODQgMTIuODQgMCAwIDAgMi44MS43QTIgMiAwIDAgMSAyMiAxNi45MnoiPjwvcGF0aD48L3N2Zz4=);
+            }
+            .icons {
+                display: flex;
+                justify-content: center;
+            }
+            .icons img {
+                padding: 5px 10px;
+            }
+            /* FOR LAPS */
+            @media screen and (min-width: 580px) {
+                .hero_text h1 {
+                    font-size: 4em;
+                    float:left;
+                }
+                .hero_text p {
+                    padding-left: 10px;
+                    box-shadow: none;
+                }
+                .hero_text p::after {
+                    content: "";
+                    float: left;
+                    background-color: #008fd5;
+                    width: 100%;
+                    height: 5px;
+                    border-radius: 3px;
+                    margin-top: 10px;
+                }
+                .popup .modal {
+                    width: 40%;
+                }
+            }
+
+            /* MODAL POPUP */
+            .popup {
+                position: fixed;
+                width: 100vw;
+                height: 100vh;
+                top: 0;
+                left:0;
+                background-color: rgba(0,0,0,0.9);
+                z-index: 999;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                display: none;
+            }
+            .modal {
+                width:90%;
+                background-color: #fff;
+                display: none;
+                transform: scale(0.5);
+            }
+            .modal_top {
+                position: relative;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                padding: 16px;
+                background-color: #f1f1f1;
+                min-height: 180px;
+                color: white;
+                box-shadow: inset 0px -80px 90px rgba(0,0,0,1);
+                background-size: cover;
+                background-position: center center;
+            }
+            .modal_top .hd {
+                position: absolute;
+                bottom: 30px;
+                left: 20px;
+                font-size: large;
+                font-weight: 700;
+            }
+            .modal_list ul {
+                list-style: "📖  ";
+                list-style-position: outside!important;
+            }
+            .modal_list ul li {
+                margin: 5px 10px;
+            }
+            .modal_top .close {
+                position: absolute !important;
+                right: 20px;
+                top: 10px;
+                color: #fff;
+                font-size: 28px !important;
+                font-weight: bold;
+                width: fit-content;
+                height: fit-content;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: rgb(209, 209, 209);
+                text-decoration: none;
+                cursor: pointer;
+            }
+            .pop {
+                animation: pop-up 0.3s cubic-bezier(0.27,0.53,0.28,1.58) forwards;
+            }
+            @keyframes pop-up {
+                0% { transform: scale(0); opacity: 0; }
+                100% { transform: scale(1); opacity: 1; }
+            } 
+            /* COLLAPSIBLE */
+            .collapsible {
+                cursor: pointer;
+                width: 80%;
+                border: none;
+                outline: none;
+            }
+            .collapsible span:hover {
+                border-bottom: 2px dotted #000;
+            }
+            .active span, .collapsible span:hover {
+                border-bottom: 2px dotted #000;
+            }
+            .c-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+                background-color: #f1f1f1;
+                color: #008fd5;
+            }
+            .c-content ul {
+                padding-inline-start: 20px;
+            }
+            .c-content li {
+                list-style-type: "◾️ ";
+            }
+        </style>
+    </head>
     <body>
-        <h1>Stay Positive, Work Hard, MAke it Happen</h1>
+        <div class="hero">
+            <div class="logo_wrapper">
+                <img src="KSU.png" />
+            </div>
+            <div class="hero_text">
+                <h1>Academic </h1>
+                <h1>Assistance </h1>
+                <h1>Portal</h1>
+                <p>KSU CET UNIT</p>
+            </div>
+            <div id="scroll" onclick="document.querySelector('.study').scrollIntoView(true);">
+                <a><span></span></a>
+            </div>
+        </div>
+        <div class="study">
+            <h1>Study Materials</h1>
+            <p>Find your study notes here</p>
+            <div class="srow">
+                <div class="scol">
+                    <div class="card card1" onclick="popUp(1)">
+                        <span>Basics of Elecrical and Electronics</span>
+                    </div>
+                </div>
+                <div class="scol">
+                    <div class="card card2" onclick="popUp(2)">
+                        <span>Basics of Civil and Mechanical</span>
+                    </div>
+                </div>
+                <div class="scol">
+                    <div class="card card3" onclick="popUp(3)">
+                        <span>C Programming</span>
+                    </div>
+                </div>
+                <div class="scol">
+                    <div class="card card4" onclick="popUp(4)">
+                        <span>Engineering Graphics</span>
+                    </div>
+                </div>
+                <div class="scol">
+                    <div class="card card5" onclick="popUp(5)">
+                        <span>Engineering Mechanics</span>
+                    </div>
+                </div>
+                <div class="scol">
+                    <div class="card card6" onclick="popUp(6)">
+                        <span>Engineering Chemistry</span>
+                    </div>
+                </div>
+                <div class="scol">
+                    <div class="card card7" onclick="popUp(7)">
+                        <span>Engineering Physics</span>
+                    </div>
+                </div>
+                <div class="scol">
+                    <div class="card card8" onclick="popUp(8)">
+                        <span>Mathematics</span>
+                    </div>
+                </div>
+                <div class="scol">
+                    <div class="card card9" onclick="popUp(9)">
+                        <span>Life Skills</span>
+                    </div>
+                </div>
+                <div class="scol">
+                    <div class="card card10" onclick="popUp(10)">
+                        <span>Professional Communication</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scholor">
+            <h1>Scholorships</h1>
+            <p>Lets find all our scholorship details</p>
+            <ul>
+                <li><a href="https://meahouston.org/scholarship/">MEA Scholarship</a></li>
+                <li><a href="https://scholarships.gov.in/">Central Sector Scholarship</a></li>
+                <li><a href="https://www.egrantz.kerala.gov.in/">E-Grantz, KPCR</a></li>
+                <li><a href="https://cet.ac.in/">GEMS Scholarship</a></li>
+                <li><a href="https://scholarships.gov.in/">Prime Minister's Scholarship Scheme</a></li>
+                <li><a href="https://scholarships.gov.in/">Merit Cum Means Scholarship</a></li>
+                <li><a href="https://ongcscholar.org/">ONGC Scholarship</a></li>
+                <li><a href="https://licindia.in/Bottom-Links/Golden-Jubilee-Foundation/Scholarship">LIC Golden Jubilee Scholarship</a></li>
+                <li><a href="https://ffe.org/scholarships/">Founadation For Excellence scholorship</a></li>
+                <li><a href="https://www.siemens.co.in/scholarship">Siemens Scholarship Program</a></li>
+                <li><a href="https://iocl.com/">IOCL Academic Scholarship</a></li>
+                <li><a href="http://nkwprogram.org/scholarship.php">NKW Scholarship Program</a></li>
+            </ul>
+        </div>
+        <div class="query">
+            <h1>For queries</h1>
+            <p>For any issues KSU CET Helpdesk is always open for you . If you have any queries feel free to contact us.</p>
+            <ul>
+                <li>Jishad : +916238610724</li>
+                <li>Bayan : +916238610724</li>
+                <li>Fasil : +916238610724</li>
+            </ul>
+            <div class="icons">
+                <a href="https://www.instagram.com/ksu_cet_unit/"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDhmZDUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLWluc3RhZ3JhbSI+PHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiByeD0iNSIgcnk9IjUiPjwvcmVjdD48cGF0aCBkPSJNMTYgMTEuMzdBNCA0IDAgMSAxIDEyLjYzIDggNCA0IDAgMCAxIDE2IDExLjM3eiI+PC9wYXRoPjxsaW5lIHgxPSIxNy41IiB5MT0iNi41IiB4Mj0iMTcuNTEiIHkyPSI2LjUiPjwvbGluZT48L3N2Zz4=" /></a>
+                <a href="https://www.facebook.com/ksucetunit/"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDhmZDUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLWZhY2Vib29rIj48cGF0aCBkPSJNMTggMmgtM2E1IDUgMCAwIDAtNSA1djNIN3Y0aDN2OGg0di04aDNsMS00aC00VjdhMSAxIDAgMCAxIDEtMWgzeiI+PC9wYXRoPjwvc3ZnPg==" /></a>
+            </div>
+        </div>
+        <div class="popup" id="popup">
+            <div class="modal modal1">
+                <div class="modal_top card1">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <span class="hd">Basics of Electrical and Electronics</span>
+                </div>
+                <div class="modal_list">
+                    <ul>
+                        <li class="collapsible"><span>Question Paper</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li>Sem 1</li>
+                                <li>Sem 2</li>
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Notes/Text</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li>Semester 1</li>
+                                <li>Semester 2</li>
+                            </ul>
+                        </div>
+                        <li>SHort Notes</li>
+                        <li>Youtube channels</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal modal2">
+                <div class="modal_top card2">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <span class="hd">Basics of Civil and Mechanical</span>
+                </div>
+                <div class="modal_list">
+                    <ul>
+                        <li>Question Paper</li>
+                        <li>Notes/Text</li>
+                        <li>SHort Notes</li>
+                        <li>Youtube channels</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal modal3">
+                <div class="modal_top card3">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <span class="hd">C Programing</span>
+                </div>
+                <div class="modal_list">
+                    <ul>
+                        <li>Question Paper</li>
+                        <li>Notes/Text</li>
+                        <li>SHort Notes</li>
+                        <li>Youtube channels</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal modal4">
+                <div class="modal_top card4">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <span class="hd">Engineering graphics</span>
+                </div>
+                <div class="modal_list">
+                    <ul>
+                        <li>Question Paper</li>
+                        <li>Notes/Text</li>
+                        <li>SHort Notes</li>
+                        <li>Youtube channels</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal modal5">
+                <div class="modal_top card5">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <span class="hd">Engineering Mechanics</span>
+                </div>
+                <div class="modal_list">
+                    <ul>
+                        <li>Question Paper</li>
+                        <li>Notes/Text</li>
+                        <li>SHort Notes</li>
+                        <li>Youtube channels</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal modal6">
+                <div class="modal_top card6">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <span class="hd">Engineering Chemistry</span>
+                </div>
+                <div class="modal_list">
+                    <ul>
+                        <li>Question Paper</li>
+                        <li>Notes/Text</li>
+                        <li>SHort Notes</li>
+                        <li>Youtube channels</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal modal7">
+                <div class="modal_top card7">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <span class="hd">Engineering Physics</span>
+                </div>
+                <div class="modal_list">
+                    <ul>
+                        <li>Question Paper</li>
+                        <li>Notes/Text</li>
+                        <li>SHort Notes</li>
+                        <li>Youtube channels</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal modal8">
+                <div class="modal_top card8">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <span class="hd">Mathematics</span>
+                </div>
+                <div class="modal_list">
+                    <ul>
+                        <li>Question Paper</li>
+                        <li>Notes/Text</li>
+                        <li>SHort Notes</li>
+                        <li>Youtube channels</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal modal9">
+                <div class="modal_top card9">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <span class="hd">Life skills</span>
+                </div>
+                <div class="modal_list">
+                    <ul>
+                        <li>Question Paper</li>
+                        <li>Notes/Text</li>
+                        <li>SHort Notes</li>
+                        <li>Youtube channels</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal modal10">
+                <div class="modal_top card10">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <span class="hd">Professional Communication</span>
+                </div>
+                <div class="modal_list">
+                    <ul>
+                        <li>Question Paper</li>
+                        <li>Notes/Text</li>
+                        <li>SHort Notes</li>
+                        <li>Youtube channels</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
+<script>
+var popup = document.getElementById("popup");
+var modals = document.getElementsByClassName("modal");
+var coll = document.getElementsByClassName("collapsible");
+
+window.onclick = function(event) {
+  if (event.target == popup) {
+    closePopup();
+  }
+}
+function closePopup() {
+    popup.style.display = "none";
+    for (i=0;i<modals.length;i++){
+        modals[i].style.display = "none";
+        modals[i].classList.remove("pop");
+    }
+}
+function popUp(x) {
+    closePopup();
+    popup.style.display = "flex";
+    document.getElementsByClassName("modal"+x)[0].style.display = "block";
+    document.getElementsByClassName("modal"+x)[0].classList.add("pop");
+}
+
+for (var i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
