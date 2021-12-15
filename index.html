@@ -46,6 +46,7 @@
                 z-index: -1;
             }
             .logo_wrapper img {
+                display: inline;
                 height: 70px;
                 margin: 10px 0px 0px 10px;
             }
@@ -404,7 +405,7 @@
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.2s ease-out;
-                background-color: #f1f1f1;
+                background-color: #fff;
                 color: #008fd5;
             }
             .c-content ul {
@@ -412,6 +413,13 @@
             }
             .c-content li {
                 list-style-type: "◾️ ";
+            }
+            .c-content li a {
+                text-decoration: none;
+                color: #000;
+            }
+            .c-content li a:hover {
+                color: #008fd5;
             }
         </style>
     </head>
@@ -474,16 +482,16 @@
                         <span>Mathematics</span>
                     </div>
                 </div>
-                <div class="scol">
+                <!-- <div class="scol">
                     <div class="card card9" onclick="popUp(9)">
                         <span>Life Skills</span>
                     </div>
-                </div>
-                <div class="scol">
+                </div> -->
+                <!-- <div class="scol">
                     <div class="card card10" onclick="popUp(10)">
                         <span>Professional Communication</span>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="scholor">
@@ -506,11 +514,11 @@
         </div>
         <div class="query">
             <h1>For queries</h1>
-            <p>For any issues KSU CET Helpdesk is always open for you . If you have any queries feel free to contact us.</p>
+            <p>If you have any queries feel free to contact us.</p>
             <ul>
-                <li>Jishad : +916238610724</li>
-                <li>Bayan : +916238610724</li>
-                <li>Fasil : +916238610724</li>
+                <!-- <li>Muhammed Jishad : +919495007386</li>
+                <li>Bayan  : +916238610724</li>
+                <li>Fasil  : +916238610724</li> -->
             </ul>
             <div class="icons">
                 <a href="https://www.instagram.com/ksu_cet_unit/"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDhmZDUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLWluc3RhZ3JhbSI+PHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiByeD0iNSIgcnk9IjUiPjwvcmVjdD48cGF0aCBkPSJNMTYgMTEuMzdBNCA0IDAgMSAxIDEyLjYzIDggNCA0IDAgMCAxIDE2IDExLjM3eiI+PC9wYXRoPjxsaW5lIHgxPSIxNy41IiB5MT0iNi41IiB4Mj0iMTcuNTEiIHkyPSI2LjUiPjwvbGluZT48L3N2Zz4=" /></a>
@@ -518,6 +526,7 @@
             </div>
         </div>
         <div class="popup" id="popup">
+
             <div class="modal modal1">
                 <div class="modal_top card1">
                     <span class="close" onclick="closePopup()">&times;</span>
@@ -525,25 +534,39 @@
                 </div>
                 <div class="modal_list">
                     <ul>
-                        <li class="collapsible"><span>Question Paper</span></li>
+                        <li class="collapsible"><span>Syllabus</span></li>
                         <div class="c-content">
                             <ul>
-                                <li>Sem 1</li>
-                                <li>Sem 2</li>
+                                <li><a href="pdfs/bee/be&e syllabus.pdf">Basics of Electrical and Electronics</a></li>
                             </ul>
                         </div>
-                        <li class="collapsible"><span>Notes/Text</span></li>
+                        <li class="collapsible"><span>Basics of Electrical notes</span></li>
                         <div class="c-content">
                             <ul>
-                                <li>Semester 1</li>
-                                <li>Semester 2</li>
+                                <li><a href="pdfs/bee/module 1.pdf">module 1</a></li>
+                                <li><a href="pdfs/bee/module 2.pdf">module 2</a></li>
+                                <li><a href="pdfs/bee/module 3.pdf">module 3</a></li>
                             </ul>
                         </div>
-                        <li>SHort Notes</li>
-                        <li>Youtube channels</li>
+                        <li class="collapsible"><span>Basics of Electronics notes</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/bec/module1.pdf">module 1</a></li>
+                                <li><a href="pdfs/bec/module2.pdf">module 2</a></li>
+                                <li><a href="pdfs/bec/module3.pdf">module 3</a></li>
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Question Papers</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/bee/q/BEE and BEC Questions.pdf">Paper 1</a></li>
+                                <li><a href="pdfs/bee/q/BEEfinal.pdf">Paper 2</a></li>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
             </div>
+
             <div class="modal modal2">
                 <div class="modal_top card2">
                     <span class="close" onclick="closePopup()">&times;</span>
@@ -551,10 +574,32 @@
                 </div>
                 <div class="modal_list">
                     <ul>
-                        <li>Question Paper</li>
-                        <li>Notes/Text</li>
-                        <li>SHort Notes</li>
-                        <li>Youtube channels</li>
+                        <li class="collapsible"><span>Syllabus</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/bce/civil&mechanical syllabus.pdf">Basics of Civil and Mechanical engg</a></li>
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Notes/Text</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/bce/Basic Civil Engineering.pdf">Basics of Civil Engg 1</a></li>
+                                <li><a href="pdfs/mech/extras/Basics of Civil and Mechanical by santha minu.pdf">Basics of Civil Engg 2</a></li>
+                                <li><a href="pdfs/bce/Civil module1-3.pdf">Basics of Civil Module 1-3</a></li>
+                                <li><a href="pdfs/mech/Mech text book(module 1).pdf">Basics of mechanical module 1</a></li>
+                                <li><a href="pdfs/mech/mech module 2.pdf">Basics of mechanical module 2</a></li>
+                                <li><a href="pdfs/mech/BME Module 2 8th edition text.pdf">Basics of mechanical module 2</a></li>
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Question Papers</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/bce/q/Paper1.pdf">Paper 1</a></li>
+                                <li><a href="pdfs/bce/q/Paper 2.pdf">Paper 2</a></li>
+                                <li><a href="pdfs/bce/q/Paper 3.pdf">Paper 3</a></li>
+                                <li><a href="pdfs/bce/q/CIVIL PYQ.pdf">Paper 4</a></li>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -565,10 +610,21 @@
                 </div>
                 <div class="modal_list">
                     <ul>
-                        <li>Question Paper</li>
-                        <li>Notes/Text</li>
-                        <li>SHort Notes</li>
-                        <li>Youtube channels</li>
+                        <li class="collapsible"><span>Syllabus</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/cpp/c syllabus.pdf">C Programming</a></li>
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Notes</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/cpp/2D Array.pdf">2D Array</a></li>
+                                <li><a href="pdfs/cpp/ARRAYS.pdf">Array</a></li>
+                                <li><a href="pdfs/cpp/Pointers.pdf">Pointers</a></li>
+                                <li><a href="pdfs/cpp/Strings.pdf">Strings</a></li>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -579,10 +635,31 @@
                 </div>
                 <div class="modal_list">
                     <ul>
-                        <li>Question Paper</li>
-                        <li>Notes/Text</li>
-                        <li>SHort Notes</li>
-                        <li>Youtube channels</li>
+                        <li class="collapsible"><span>Syllabus</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/graphics/graphics_syllabus.pdf">Engineering Graphics</a></li>
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Notes</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/graphics/Engg Graphics Chapters 1-3.pdf">Engg graphics chapter 1-3</a></li>
+                                <li><a href="pdfs/graphics/Conversion of Pic to Ortho Notes.pdf">Conversion of pictorial views</a></li>
+                                <li><a href="pdfs/graphics/Development Notes.pdf">Development of surfaces notes</a></li>
+                                <li><a href="pdfs/graphics/Free Hand Sketch Notes.pdf">Free hand sketching notes</a></li>
+                                <li><a href="pdfs/graphics/Intersection Notes.pdf">Intersection of surfaces</a></li>
+                                <li><a href="pdfs/graphics/Isometric Notes.pdf">Isometric projection</a></li>
+                                <li><a href="pdfs/graphics/Isometric Notes.pdf">Section of solids</a></li>
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Questions</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/graphics/q/paper1.pdf">Paper 1</a></li>
+                                <li><a href="pdfs/graphics/q/paper2.pdf">Paper 2</a></li>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -593,10 +670,31 @@
                 </div>
                 <div class="modal_list">
                     <ul>
-                        <li>Question Paper</li>
-                        <li>Notes/Text</li>
-                        <li>SHort Notes</li>
-                        <li>Youtube channels</li>
+                        <li class="collapsible"><span>Syllabus</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/mechanics/syllabus.pdf">Engineering Mechanics</a></li>
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Notes</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/mechanics/module1.pdf">Module 1</a></li>
+                                <li><a href="pdfs/mechanics/module2.pdf">Module 2</a></li>
+                                <li><a href="pdfs/mechanics/module3.pdf">Module 3</a></li>
+                                <li><a href="pdfs/mechanics/module4.pdf">Module 4</a></li>
+                                <li><a href="pdfs/mechanics/module5.pdf">Module 5</a></li>
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Question Papers</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/mechanics/q/Paper 1.pdf">Paper 1</a></li>
+                                <li><a href="pdfs/mechanics/q/Paper 2.pdf">Paper 2</a></li>
+                                <li><a href="pdfs/mechanics/q/Paper 3.pdf">Paper 3</a></li>
+                                
+                            </ul>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -607,10 +705,31 @@
                 </div>
                 <div class="modal_list">
                     <ul>
-                        <li>Question Paper</li>
-                        <li>Notes/Text</li>
-                        <li>SHort Notes</li>
-                        <li>Youtube channels</li>
+                        <li class="collapsible"><span>Syllabus</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/chemistry/syllabus.pdf">Engineering Chemistry</a></li>
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Notes</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/chemistry/module2.pdf">Module 2 Notes</a></li>
+                                <li><a href="pdfs/chemistry/Conducting Polymers Notes.pdf">Conducting Polymers</a></li>
+                                <li><a href="pdfs/chemistry/Nano Final Notes.pdf"> Nanoscience notes</a></li>
+                                <li><a href="pdfs/chemistry/organic light emiting diode.pdf">Organic Light Emitting diode</a></li>
+                                <li><a href="pdfs/chemistry/SEM Notes.pdf">Scanning Electron Microscopy</a></li>
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Question Papers</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/chemistry/q/paper1.pdf">Paper 1</a></li>
+                                <li><a href="pdfs/chemistry/q/paper2.pdf">Paper 2</a></li>
+                                <li><a href="pdfs/chemistry/q/paper3.pdf">Paper 3</a></li>
+                                <li><a href="pdfs/chemistry/q/paper4.pdf">Paper 4</a></li>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -621,10 +740,31 @@
                 </div>
                 <div class="modal_list">
                     <ul>
-                        <li>Question Paper</li>
-                        <li>Notes/Text</li>
-                        <li>SHort Notes</li>
-                        <li>Youtube channels</li>
+                        <li class="collapsible"><span>Syllabus</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/physics/physics_A syllabus.pdf">Engineering Physics A</a></li>
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Notes</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/physics/module1.pdf">Module 1</a></li>
+                                <li><a href="pdfs/physics/module2.pdf">Module 2</a></li>
+                                <li><a href="pdfs/physics/module3.pdf">Module 3</a></li>
+                                <li><a href="pdfs/physics/module4.pdf">Module 4</a></li>
+                                <li><a href="pdfs/physics/module5.pdf">Module 5</a></li>
+                                
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Question Papers</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/physics/q/5_6275891077174002427.pdf">Paper 1</a></li>
+                                <li><a href="pdfs/physics/q/BTech S1 Improvement.pdf">Paper 2</a></li>
+                                <li><a href="pdfs/physics/q/Physics_B_December_2019_Q.P.pdf">Paper 3</a></li>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -635,41 +775,68 @@
                 </div>
                 <div class="modal_list">
                     <ul>
-                        <li>Question Paper</li>
-                        <li>Notes/Text</li>
-                        <li>SHort Notes</li>
-                        <li>Youtube channels</li>
+                        <li class="collapsible"><span>Syllabus</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/maths/LINEAR ALGEBRA AND CALCULUS_syllabus.pdf">Linear Algebra and Calculus</a></li>
+                                <li><a href="pdfs/maths/vector calculus, diffrential eqn and transforms_syllabus.pdf">Vector calculus, diffrential equation and transforms</a></li>
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Textbook/Notes</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/maths/Advanced engineering mathematics.pdf">Advanced Engineering Mathematics</a></li>
+                                <li><a href="pdfs/maths/Engg Mathematics 1 (KSU CET UNIT).pdf">Vector Calculus</a></li>
+                                <li><a href="pdfs/maths/Engg Mathematics Mod 4&5 (KSU CET UNIT).pdf">infinite Series (Module 4)</a></li>
+                                <li><a href="pdfs/maths/Linear Algebra Notes (KSU CET UNIT).pdf">Linear Algebra notes</a></li>
+                                <li><a href="pdfs/maths/Notes on Laplace Transforms (KSU CET UNIT).pdf">Laplace Transforms notes</a></li>
+                                <li><a href="pdfs/maths/Notes on Fourier Transforms (KSU CET UNIT).pdf">Fourier Transforms notes</a></li>
+                            </ul>
+                        </div>
+                        <li class="collapsible"><span>Question Papers</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/maths/q/MAT101 1st Series Test QP(CS).pdf">Paper 1</a></li>
+                                <li><a href="pdfs/maths/q/Paper 2.pdf">Paper 2</a></li>
+                                <li><a href="pdfs/maths/q/MATHS PYQ.pdf">Paper 3</a></li>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
             </div>
-            <div class="modal modal9">
+            
+            <!-- <div class="modal modal9">
                 <div class="modal_top card9">
                     <span class="close" onclick="closePopup()">&times;</span>
                     <span class="hd">Life skills</span>
                 </div>
                 <div class="modal_list">
                     <ul>
-                        <li>Question Paper</li>
-                        <li>Notes/Text</li>
-                        <li>SHort Notes</li>
-                        <li>Youtube channels</li>
+                        <li class="collapsible"><span>Syllabus</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/lifeskills/syllabus.pdf">Life Skill</a></li>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
-            </div>
-            <div class="modal modal10">
+            </div> -->
+            <!-- <div class="modal modal10">
                 <div class="modal_top card10">
                     <span class="close" onclick="closePopup()">&times;</span>
                     <span class="hd">Professional Communication</span>
                 </div>
                 <div class="modal_list">
                     <ul>
-                        <li>Question Paper</li>
-                        <li>Notes/Text</li>
-                        <li>SHort Notes</li>
-                        <li>Youtube channels</li>
+                        <li class="collapsible"><span>Syllabus</span></li>
+                        <div class="c-content">
+                            <ul>
+                                <li><a href="pdfs/procom/syllabus.pdf">Professional Communication</a></li>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
-            </div>
+            </div> -->
         </div>
     </body>
 </html>
